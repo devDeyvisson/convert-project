@@ -3,6 +3,7 @@ const form = document.querySelector("form")
 const amount = document.getElementById("amount")
 const currency = document.getElementById("currency")
 const footer = document.querySelector("main footer")
+const description = document.getElementById("description")
 
 // Cotação de moedas do dia
 const USD = 4.87
@@ -37,12 +38,14 @@ form.onsubmit = (event) => {
 // Convertendo a moeda
 function convertCurrency(amount, price, symbol) {
     try {
+        description.textContent = `${symbol} 1 = ${price}`
+
         // Aplica a classe que exibe o footer para mostrar o resultado na tela
         footer.classList.add("show-result")
     } catch (error) {
         // Remove a classe footer, ou seja, não exibe o resultado na tela
         footer.classList.remove("show-result")
-        
+
         console.log(error)
         alert("Não foi possível fazer a conversão. Tente novamente mais terde!")
     }
